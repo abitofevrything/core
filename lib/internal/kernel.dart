@@ -42,7 +42,7 @@ final class Kernel {
   void _registerHttp(HttpConfigContract Function() http) {
     final config = http();
 
-    this.http = container.bind<DiscordHttpClient>('http', (_) =>
+    this.http = container.bind<DiscordHttpClient>('discord_http', (_) =>
       DiscordHttpClient(baseUrl: '${config.baseUrl}/v${config.version}')
         ..headers.setContentType('application/json')
         ..headers.setAuthorization('Bot $token')
