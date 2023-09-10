@@ -3,6 +3,7 @@ import 'package:mineral/internal/config/http_config_contract.dart';
 import 'package:mineral/internal/fold/container.dart';
 import 'package:mineral/internal/services/http/discord_http_client.dart';
 import 'package:mineral/internal/services/intents/intents.dart';
+import 'package:mineral/internal/wss/discord_websocket.dart';
 import 'package:mineral/services/env/environment.dart';
 import 'package:mineral/services/logger/logger_contract.dart';
 
@@ -20,9 +21,6 @@ final class Kernel {
     _registerHttp(http);
 
     this.logger.info('Kernel is ready');
-  }
-
-  Future<void> start () async {
   }
 
   /// Register the application
@@ -48,6 +46,12 @@ final class Kernel {
         ..headers.setAuthorization('Bot $token')
     );
   }
+
+  Future<void> start () async {
+    final DiscordWebsocket wss = DiscordWebsocket(http, token, intents: intents);
+    await wss.start();
+  }
+
 
   factory Kernel.make({
     required ApplicationConfigContract Function(Environment) application,
