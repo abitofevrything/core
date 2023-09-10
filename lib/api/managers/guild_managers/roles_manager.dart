@@ -1,4 +1,4 @@
-import '../../guild/members/roles/role.dart';
+import '../../server/role.dart';
 import '../cache_manager.dart';
 
 class RolesManager extends CacheManager<Role> {

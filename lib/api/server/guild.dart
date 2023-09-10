@@ -1,17 +1,17 @@
-import 'package:mineral/api/channels/guild/text_channel.dart';
+import 'package:mineral/api/server/channels/text_channel.dart';
 import 'package:mineral/api/channels/guild/voice_channel.dart';
 import 'package:mineral/api/guild/enum/locale.dart';
 import 'package:mineral/api/managers/guild_managers/channels_manager.dart';
 import 'package:mineral/api/managers/guild_managers/emojis_manager.dart';
 import 'package:mineral/api/managers/guild_managers/roles_manager.dart';
-import 'package:mineral/api/user/user.dart';
+import 'package:mineral/api/private/user.dart';
 
 import '../managers/guild_managers/member_manager.dart';
 import '../managers/image_formatter.dart';
-import 'enum/guild_enum.dart';
-import 'enum/guild_features.dart';
+import '../guild/enum/guild_enum.dart';
+import '../guild/enum/guild_features.dart';
 
-class Guild {
+final class Guild {
   final String id;
   String label;
   String? description;
@@ -27,6 +27,7 @@ class Guild {
 
   VoiceChannel? afkChannel;
   int? afkTimeout;
+
   TextChannel? rulesChannel;
   TextChannel? systemChannel;
   TextChannel? publicUpdatesChannel;

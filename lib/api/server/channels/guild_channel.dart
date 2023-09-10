@@ -1,4 +1,4 @@
-import '../channel.dart';
+import '../../shared/channel.dart';
 
 class GuildChannel extends Channel {
   final Null guild;
