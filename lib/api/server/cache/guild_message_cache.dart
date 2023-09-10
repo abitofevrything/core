@@ -9,11 +9,8 @@ final class GuildMessageCacheEntity extends Cache<GuildMessage> implements Guild
   final Map<String, GuildMessage> _cache = {};
 
   @override
-  Future<List<GuildMessage>> fetch () async {}
-  Future<List<GuildMessage>> fetchOne () async {}
-}
-
-main () {
-  final GuildMessageCache cache = GuildMessageCacheEntity();
-  cache.
+  Future<List<GuildMessage>> fetch() {
+    // TODO: implement fetch
+    throw UnimplementedError();
+  }
 }
