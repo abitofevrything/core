@@ -1,4 +1,5 @@
 import 'package:http/http.dart';
+import 'package:mineral/internal/fold/container.dart';
 import 'package:mineral/internal/fold/injectable.dart';
 import 'package:mineral/internal/services/http/builders/discord_delete_builder.dart';
 import 'package:mineral/internal/services/http/builders/discord_get_builder.dart';
@@ -105,4 +106,6 @@ class DiscordHttpClient extends Injectable implements HttpClientContract {
 
     return DiscordDeleteBuilder(dispatcher, request);
   }
+
+  factory DiscordHttpClient.singleton() => container.use<DiscordHttpClient>('discord_http');
 }
