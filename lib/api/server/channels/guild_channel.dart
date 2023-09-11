@@ -1,12 +1,13 @@
+import 'package:mineral/api/server/channels/category_channel.dart';
+import 'package:mineral/api/server/channels/resources/permissions_overwrite.dart';
 import 'package:mineral/api/server/guild.dart';
+import 'package:mineral/api/shared/channel.dart';
 import 'package:mineral/internal/services/http/discord_http_client.dart';
-
-import '../../shared/channel.dart';
 
 class GuildChannel extends Channel {
   final Guild guild;
-  Null categoryChannel;
-  List<Null> permissions;
+  CategoryChannel categoryChannel;
+  List<PermissionsOverwrite> permissions;
   int? flags;
   int? position;
 
