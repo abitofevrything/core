@@ -36,14 +36,12 @@ final class DiscordWebsocket {
 
   /// Get the gateway payload
   Future<Gateway> getGateway() async {
-    final response = await Either.future<Map<String, dynamic>, HttpResponse>(
+    final response = await Either.future<Success, Exception>(
       future: _http.get('/gateway/bot').build(),
-      onSuccess: (response) => response.value.payload,
-      onError: (failure) => print(failure.error)
+      onSuccess: (response) => Gateway.fromRequest(response.value.payload),
+      onError: (failure) => throw Exception(failure.error)
     );
 
-    return response is Success
-      ? Gateway.fromRequest(response.value)
-      : throw Exception('Failed to get gateway payload');
+    return (response as Success).value;
   }
 }

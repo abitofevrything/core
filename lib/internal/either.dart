@@ -8,7 +8,7 @@ class Either<V, E> implements EitherContract {
   static Success<T> success<T>(T value) => Success<T>(value);
   static Failure<E> failure<E>(dynamic error, { E? payload, StackTrace? stackTrace }) => Failure<E>(error, payload: payload, stackTrace: stackTrace);
 
-  static Future future<V, E> ({ required Future future, Function(Success)? onSuccess, Function(Failure<E>)? onError }) async {
+  static Future future<V, E> ({ required Future future, Function(Success)? onSuccess, Function(Failure)? onError }) async {
     try {
       final result = await future;
 
@@ -20,7 +20,7 @@ class Either<V, E> implements EitherContract {
 
       if (result is Failure) {
         return onError != null
-          ? onError(result as Failure<E>)
+          ? Failure(onError(result))
           : result;
       }
 
@@ -29,7 +29,7 @@ class Either<V, E> implements EitherContract {
       final result = Either.failure<E>(error, stackTrace: stackTrace);
 
       return onError != null
-        ? onError(result)
+        ? Failure(onError(result))
         : result;
     }
   }
