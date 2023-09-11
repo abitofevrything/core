@@ -7,7 +7,7 @@ class TextChannel extends GuildChannel {
   int? rateLimitPerUser;
   String? topic;
 
-  TextChannel(super.id, super.label, {
+  TextChannel._(super.id, super.label, {
     required super.guild,
     required super.categoryChannel,
     required super.permissions,

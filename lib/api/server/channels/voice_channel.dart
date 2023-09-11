@@ -1,1 +1,3 @@
-class VoiceChannel {} // todo
+class VoiceChannel {
+  VoiceChannel._();
+} // todo
