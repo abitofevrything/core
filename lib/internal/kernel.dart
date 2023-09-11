@@ -14,7 +14,7 @@ final class Kernel {
   late final String token;
   late final Intents intents;
 
-  Kernel._(ApplicationConfigContract Function(Environment) app, LoggerContract Function() logger, HttpConfigContract Function() http) {
+  Kernel._(ApplicationConfigContract Function(Environment) app, LoggerContract Function() logger, HttpConfigContract Function(Environment app) http) {
     _registerApplication(app);
     _registerLogger(logger);
     _registerHttp(http);
@@ -39,8 +39,8 @@ final class Kernel {
   }
 
   /// Register the HTTP client
-  void _registerHttp(HttpConfigContract Function() http) {
-    final config = http();
+  void _registerHttp(HttpConfigContract Function(Environment) http) {
+    final config = http(environment);
 
     this.http = container.bind<DiscordHttpClient>('discord_http', (_) =>
       DiscordHttpClient(baseUrl: '${config.baseUrl}/v${config.version}')
@@ -52,6 +52,6 @@ final class Kernel {
   factory Kernel.make({
     required ApplicationConfigContract Function(Environment) application,
     required LoggerContract Function() logger,
-    required HttpConfigContract Function() http,
+    required HttpConfigContract Function(Environment) http,
   }) => Kernel._(application, logger, http);
 }
