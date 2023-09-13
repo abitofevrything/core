@@ -10,7 +10,6 @@ abstract class Message {
   final Timestamp? editedTimestamp;
   bool tts;
   bool mentionEveryone;
-  List<User> mentions;
   bool pinned;
   MessageType type;
   List<Null> reactions; // todo implement reactions
@@ -27,7 +26,6 @@ abstract class Message {
     required this.editedTimestamp,
     required this.tts,
     required this.mentionEveryone,
-    required this.mentions,
     required this.pinned,
     required this.type,
     required this.reactions,
