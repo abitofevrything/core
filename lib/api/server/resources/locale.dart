@@ -40,4 +40,13 @@ enum Locale {
 
   @override
   String toString() => locale;
+
+  static Locale from(final String locale) {
+    for (final Locale l in Locale.values) {
+      if (l.locale == locale) {
+        return l;
+      }
+    }
+    throw ArgumentError.value(locale, 'locale', 'Unknown locale');
+  }
 }

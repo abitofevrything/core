@@ -24,10 +24,21 @@ enum GuildFeature {
   VANITY_URL("VANITY_URL", "Guild has access to set a vanity URL"),
   VERIFIED("VERIFIED", "Guild is verified"),
   VIP_REGIONS("VIP_REGIONS", "Guild has access to set 384kbps bitrate in voice (previously VIP voice servers)."),
-  WELCOME_SCREEN_ENABLED("WELCOME_SCREEN_ENABLED", "Guild has enabled the welcome screen");
+  WELCOME_SCREEN_ENABLED("WELCOME_SCREEN_ENABLED", "Guild has enabled the welcome screen"),
+  GUESTS_ENABLED("GUESTS_ENABLED", "Guild has guest feature enabled"),
+  CHANNEL_ICON_EMOJIS_GENERATED("CHANNEL_ICON_EMOJIS_GENERATED", "Guild has generated channel icon emojis");
 
   final String name;
   final String description;
 
   const GuildFeature(this.name, this.description);
+
+  static GuildFeature? from(final String name) {
+    for (final GuildFeature l in GuildFeature.values) {
+      if (l.name == name) {
+        return l;
+      }
+    }
+      print("warn: $name is not implemented yet, contact our dev team"); // TODO replace with logger
+  }
 }

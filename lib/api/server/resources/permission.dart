@@ -45,4 +45,13 @@ enum Permission {
 
   final int value;
   const Permission(this.value);
+
+  static Permission from(final int value) {
+    for (final Permission permission in Permission.values) {
+      if (permission.value == value) {
+        return permission;
+      }
+    }
+    throw ArgumentError('Unknown permission: $value');
+  }
 }
