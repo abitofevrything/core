@@ -6,15 +6,17 @@ class TextChannel extends GuildChannel {
   bool? nsfw;
   int? rateLimitPerUser;
   String? topic;
+  int? position;
+
 
   TextChannel._(super.id, super.label, {
     required super.guild,
     required super.categoryChannel,
     required super.permissions,
     required super.flags,
-    required super.position,
     required this.nsfw,
     required this.rateLimitPerUser,
-    required this.topic
+    required this.topic,
+    required this.position,
   });
 }

@@ -9,14 +9,12 @@ class GuildChannel extends Channel {
   CategoryChannel categoryChannel;
   List<PermissionsOverwrite> permissions;
   int? flags;
-  int? position;
 
   GuildChannel(super.id, super.label, {
     required this.guild,
     required this.categoryChannel,
     required this.permissions,
     required this.flags,
-    required this.position
   });
 
   /// Delete this channel
