@@ -1,4 +1,6 @@
-class Snowflake {
+typedef Snowflake = String;
+
+/*{
   final String id;
 
   Snowflake(this.id);
@@ -12,4 +14,4 @@ class Snowflake {
   @override
   int get hashCode => id.hashCode;
 }
-
+*/
